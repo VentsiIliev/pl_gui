@@ -1,12 +1,7 @@
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QFrame, QSizePolicy
 from PyQt6.QtCore import pyqtSignal, QEvent
 
-try:
-    from src.utils_widgets.MaterialButton import MaterialButton
-except ImportError:
-    from MaterialButton import MaterialButton
-
-
+from src.utils.utils_widgets.MaterialButton import MaterialButton
 class ControlButtonsWidget(QWidget):
     """
     Pure UI widget: Start / Stop / Pause buttons.

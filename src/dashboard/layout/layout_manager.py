@@ -3,10 +3,7 @@ from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QGridLayout,
 from PyQt6.QtCore import Qt
 from typing import List
 
-try:
-    from src.utils_widgets.MaterialButton import MaterialButton
-except ImportError:
-    from MaterialButton import MaterialButton
+from src.utils.utils_widgets.MaterialButton import MaterialButton
 
 try:
     from src.dashboard.resources.styles import BORDER, SLOT_PLACEHOLDER_STYLE

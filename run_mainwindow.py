@@ -14,7 +14,10 @@ def create_simple_factory():
             print(f"[SimpleFactory] Creating DashboardWidget for '{app_name}'")
 
             from src.dashboard.DashboardWidget import DashboardWidget
-            return DashboardWidget()
+            dashboard = DashboardWidget()
+            app_widget = AppWidget(app_name=app_name)
+            app_widget.layout().addWidget(dashboard)
+            return app_widget
         print(f"[SimpleFactory] Creating placeholder widget for '{app_name}'")
         return AppWidget(app_name=app_name)
 

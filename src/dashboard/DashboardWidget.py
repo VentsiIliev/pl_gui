@@ -1,11 +1,7 @@
 from PyQt6.QtCore import pyqtSignal, QEvent
 from PyQt6.QtWidgets import QWidget
 
-try:
-    from src.utils_widgets.MaterialButton import MaterialButton
-except ImportError:
-    from MaterialButton import MaterialButton
-
+from src.utils.utils_widgets.MaterialButton import MaterialButton
 from src.dashboard.widgets.ControlButtonsWidget import ControlButtonsWidget
 from src.dashboard.widgets.RobotTrajectoryWidget import RobotTrajectoryWidget
 from src.dashboard.config import DashboardConfig, ActionButtonConfig
