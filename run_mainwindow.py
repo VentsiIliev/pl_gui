@@ -13,11 +13,10 @@ def create_simple_factory():
         if app_name == "Dashboard":
             print(f"[SimpleFactory] Creating DashboardWidget for '{app_name}'")
 
-            from src.dashboard.DashboardWidget import DashboardWidget
-            dashboard = DashboardWidget()
-            app_widget = AppWidget(app_name=app_name)
-            app_widget.layout().addWidget(dashboard)
-            return app_widget
+            from src.dashboard.app.BasicDashboardAppWidget import BasicDashboardAppWidget
+            dashboard = BasicDashboardAppWidget()
+
+            return dashboard
         print(f"[SimpleFactory] Creating placeholder widget for '{app_name}'")
         return AppWidget(app_name=app_name)
 
@@ -72,7 +71,7 @@ def main():
     # Step 1: Define apps with pure data - no plugin system!
     app_descriptors = get_example_app_descriptors()
 
-    # Step 2: Create factory that creates AppWidgets from descriptors - no plugin system!
+    # Step 2: Create a factory that creates AppWidgets from descriptors - no plugin system!
     widget_factory = create_simple_factory()
 
     # Step 3: Create MainWindow with pure data - NO plugin knowledge!
