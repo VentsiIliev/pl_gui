@@ -1,16 +1,16 @@
 from PyQt6.QtCore import Qt, pyqtSignal, QSize
-from PyQt6.QtGui import QFont, QColor, QIcon
+from PyQt6.QtGui import QColor
 from PyQt6.QtWidgets import (QPushButton, QGraphicsDropShadowEffect)
 
-from src.shell.ui.styles import (
+from src.settings.settings_view.styles import (
     PRIMARY, PRIMARY_DARK, PRIMARY_HOVER, TEXT_ON_PRIMARY,
     SECONDARY_BG, SECONDARY_HOVER, SECONDARY_PRESSED,
     TERTIARY_BG, TERTIARY_HOVER, TERTIARY_PRESSED, TERTIARY_TEXT,
     DISABLED_BG, SCROLLBAR_HANDLE_HOVER,
     SHADOW_PRIMARY, SHADOW_PRIMARY_HOVER,
 )
-from src.shell.ui.icon_loader import load_icon
-from .animation import AnimationManager
+
+from src.settings.settings_menu.icon_loader import load_icon
 
 
 class MenuIcon(QPushButton):
@@ -28,10 +28,10 @@ class MenuIcon(QPushButton):
         self.qta_color = qta_color
         self._original_rect = None
 
-        # Material Design touch target size (minimum 48th)
-        self.setFixedSize(112, 112)  # 112th for comfortable touch interaction
+        # Material Design touch target size (minimum 48dp)
+        self.setFixedSize(112, 112)  # 112dp for comfortable touch interaction
         self.setup_ui()
-        self.animation_manager = AnimationManager(self)
+        self.animation_manager = None
 
         # Connect callback if provided
         if self.callback is not None:
@@ -158,14 +158,16 @@ class MenuIcon(QPushButton):
         """Material Design press interaction"""
         if event.button() == Qt.MouseButton.LeftButton:
             self._original_rect = self.geometry()
-            self.animation_manager.create_button_press_animation()
+            if self.animation_manager is not None:
+                self.animation_manager.create_button_press_animation()
             self.button_clicked.emit(self.icon_label)
         super().mousePressEvent(event)
 
     def mouseReleaseEvent(self, event):
         """Material Design release interaction"""
-        if event.button() == Qt.MouseButton.LeftButton and self._original_rect:
-            self.animation_manager.create_button_release_animation(self._original_rect)
+        if self.animation_manager is not None:
+            if event.button() == Qt.MouseButton.LeftButton and self._original_rect:
+                self.animation_manager.create_button_release_animation(self._original_rect)
         super().mouseReleaseEvent(event)
 
     def paintEvent(self, event):

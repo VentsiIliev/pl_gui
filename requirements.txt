@@ -1,3 +1,5 @@
 PyQt6
 qtawesome
 opencv-python
+pytest-qt
+

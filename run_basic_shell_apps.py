@@ -3,6 +3,7 @@ from typing import List
 
 from PyQt6.QtWidgets import QApplication, QWidget
 
+from settings.app.basic_settings_app_widget import BasicSettingsAppWidget
 from src.shell.AppShell import AppShell
 from src.shell.app_descriptor import AppDescriptor
 from src.shell.base_app_widget.AppWidget import AppWidget
@@ -17,6 +18,12 @@ def create_simple_factory():
             dashboard = BasicDashboardAppWidget()
 
             return dashboard
+
+        elif app_name == "Settings":
+            print(f"[SimpleFactory] Creating SettingsWidget for '{app_name}'")
+            settings = BasicSettingsAppWidget()
+            return settings
+
         print(f"[SimpleFactory] Creating placeholder widget for '{app_name}'")
         return AppWidget(app_name=app_name)
 
@@ -28,7 +35,7 @@ def get_example_app_descriptors() -> List[AppDescriptor]:
         # Work folder (folder_id=1)
         AppDescriptor(
             name="Dashboard",
-            icon_str="fa5s.tachometer-alt",
+            icon_str="mdi.view-dashboard",
             folder_id=1
         ),
         AppDescriptor(
@@ -44,7 +51,7 @@ def get_example_app_descriptors() -> List[AppDescriptor]:
 
         # Service folder (folder_id=2)
         AppDescriptor(
-            name="GALLERY",
+            name="Settings",
             icon_str="fa5s.cog",
             folder_id=2
         ),

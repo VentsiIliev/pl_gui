@@ -4,7 +4,7 @@ This module provides consistent styling constants and stylesheets
 for all widgets in the new_widgets directory.
 """
 # ================= COLOR CONSTANTS =================
-PRIMARY = "#7A5AF8"
+PRIMARY = "#905BA9"
 PRIMARY_DARK = "#6D4ED6"
 BORDER = "#E4E6F0"
 ICON_COLOR = "#905BA9"

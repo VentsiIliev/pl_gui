@@ -67,7 +67,7 @@ pl_gui-shell/
 ## Running the Default Demo
 
 ```bash
-python run_mainwindow.py
+python run_basic_shell_apps.py
 ```
 
 This launches the shell with **3 default folders** (WORK, SERVICE, ADMINISTRATION) and **6 example apps** distributed across them:

@@ -15,11 +15,7 @@ from dashboard.config import DashboardConfig
 
 @pytest.fixture
 def app_widget(qtbot):
-    widget = BasicDashboardAppWidget(
-        config=DashboardConfig(),
-        action_buttons=[],
-        cards=[],
-    )
+    widget = BasicDashboardAppWidget(  )
     qtbot.addWidget(widget)
     return widget
 
